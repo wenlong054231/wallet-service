@@ -1,4 +1,4 @@
-package com.aaron.wallet.wallet_service;
+package com.aaron.wallet.wallet_service.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
