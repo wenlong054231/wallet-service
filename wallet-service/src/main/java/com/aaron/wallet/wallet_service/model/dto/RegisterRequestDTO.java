@@ -1,4 +1,4 @@
-package com.aaron.wallet.wallet_service.user.dto;
+package com.aaron.wallet.wallet_service.model.dto;
 
 import jakarta.validation.constraints.NotNull;
 

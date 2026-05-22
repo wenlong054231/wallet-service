@@ -1,8 +1,6 @@
-package com.aaron.wallet.wallet_service.wallet;
+package com.aaron.wallet.wallet_service.model.entity;
 
 import java.math.BigDecimal;
-
-import com.aaron.wallet.wallet_service.user.entity.User;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -44,6 +42,10 @@ public class Wallet {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public void addBalance(BigDecimal amount) {
+		this.balance = this.balance.add(amount);
 	}
 	
 	

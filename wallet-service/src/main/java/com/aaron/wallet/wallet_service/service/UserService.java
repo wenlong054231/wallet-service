@@ -1,13 +1,13 @@
-package com.aaron.wallet.wallet_service.user.service;
+package com.aaron.wallet.wallet_service.service;
 
 import java.math.BigDecimal;
 
 import org.springframework.stereotype.Service;
 
+import com.aaron.wallet.wallet_service.model.entity.User;
+import com.aaron.wallet.wallet_service.model.entity.Wallet;
+import com.aaron.wallet.wallet_service.repository.UserRepository;
 import com.aaron.wallet.wallet_service.repository.WalletRepository;
-import com.aaron.wallet.wallet_service.user.entity.User;
-import com.aaron.wallet.wallet_service.user.repository.UserRepository;
-import com.aaron.wallet.wallet_service.wallet.Wallet;
 
 import jakarta.transaction.Transactional;
 

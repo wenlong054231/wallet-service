@@ -1,12 +1,12 @@
-package com.aaron.wallet.wallet_service.user.controller;
+package com.aaron.wallet.wallet_service.controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aaron.wallet.wallet_service.user.dto.RegisterRequestDTO;
-import com.aaron.wallet.wallet_service.user.service.UserService;
+import com.aaron.wallet.wallet_service.model.dto.RegisterRequestDTO;
+import com.aaron.wallet.wallet_service.service.UserService;
 
 @RestController
 @RequestMapping("/users")

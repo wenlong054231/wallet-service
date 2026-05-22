@@ -1,7 +1,10 @@
-package com.aaron.wallet.wallet_service.transaction;
+package com.aaron.wallet.wallet_service.model.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+
+import com.aaron.wallet.wallet_service.enums.TransactionStatus;
+import com.aaron.wallet.wallet_service.enums.TransactionType;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -28,6 +31,24 @@ public class Transaction {
 	@Enumerated(EnumType.STRING)
 	private TransactionStatus status;
 	private LocalDateTime  createdAt;
+	
+	
+	public Transaction(Long id, Long fromUserId, BigDecimal amount, TransactionType type,
+			TransactionStatus status) {
+		super();
+		this.id = id;
+		this.fromUserId = fromUserId;
+		this.toUserId = toUserId;
+		this.amount = amount;
+		this.type = type;
+		this.status = status;
+		this.createdAt = LocalDateTime.now();
+	}
+
+	public static Transaction deposit(Long toUserId, BigDecimal amount) {
+		return new Transaction(null, toUserId, amount, TransactionType.DEPOSIT, TransactionStatus.SUCCESS);
+	}
+	
 	public Long getId() {
 		return id;
 	}

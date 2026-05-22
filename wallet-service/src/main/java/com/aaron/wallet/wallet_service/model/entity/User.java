@@ -1,4 +1,4 @@
-package com.aaron.wallet.wallet_service.user.entity;
+package com.aaron.wallet.wallet_service.model.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
