@@ -15,13 +15,11 @@ import jakarta.persistence.ManyToOne;
 public class Transaction {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
-	@ManyToOne
-	private long fromUserId;
+	private Long fromUserId;
 	
-	@ManyToOne
-	private long toUserId;
+	private Long toUserId;
 	private BigDecimal amount;
 	
 	@Enumerated(EnumType.STRING)
@@ -30,22 +28,22 @@ public class Transaction {
 	@Enumerated(EnumType.STRING)
 	private TransactionStatus status;
 	private LocalDateTime  createdAt;
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public long getFromUserId() {
+	public Long getFromUserId() {
 		return fromUserId;
 	}
-	public void setFromUserId(long fromUserId) {
+	public void setFromUserId(Long fromUserId) {
 		this.fromUserId = fromUserId;
 	}
-	public long getToUserId() {
+	public Long getToUserId() {
 		return toUserId;
 	}
-	public void setToUserId(long toUserId) {
+	public void setToUserId(Long toUserId) {
 		this.toUserId = toUserId;
 	}
 	public BigDecimal getAmount() {
@@ -72,6 +70,8 @@ public class Transaction {
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
+
+	
 	
 	
 }

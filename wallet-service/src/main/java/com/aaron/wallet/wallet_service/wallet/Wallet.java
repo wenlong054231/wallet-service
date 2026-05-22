@@ -2,7 +2,7 @@ package com.aaron.wallet.wallet_service.wallet;
 
 import java.math.BigDecimal;
 
-import com.aaron.wallet.wallet_service.user.User;
+import com.aaron.wallet.wallet_service.user.entity.User;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

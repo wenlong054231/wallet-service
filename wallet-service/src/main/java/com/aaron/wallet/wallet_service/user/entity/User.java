@@ -1,4 +1,4 @@
-package com.aaron.wallet.wallet_service.user;
+package com.aaron.wallet.wallet_service.user.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +16,7 @@ public class User {
 	
 	private String email;
 	private String password;
+	
 	public Long getId() {
 		return id;
 	}
