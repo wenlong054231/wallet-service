@@ -1,9 +1,7 @@
 package com.aaron.wallet.wallet_service.model.dto;
 
-import java.math.BigDecimal;
-
 import jakarta.validation.constraints.NotNull;
 
-public record DepositRequestDTO(@NotNull BigDecimal amount) {
-	
+public record TransferRequestDTO(@NotNull String email, @NotNull String password) {
+
 }
