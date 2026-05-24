@@ -3,6 +3,8 @@ package com.aaron.wallet.wallet_service.controller;
 import java.math.BigDecimal;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,11 +28,18 @@ public class TransactionController {
 	
 	@PostMapping("/deposit")
 	public ResponseEntity<ApiResponse<BigDecimal>> deposit(@RequestBody DepositRequestDTO req) {
-	    return ResponseEntity.ok(transactionService.deposit(req.email(), req.amount()));
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+		String email = authentication.getName();
+	    return ResponseEntity.ok(transactionService.deposit(email, req.amount()));
 	}
 	
 	@PostMapping("/withdraw")
 	public ResponseEntity<ApiResponse<BigDecimal>> withdraw(@RequestBody WithdrawRequestDTO req) {
-	    return ResponseEntity.ok(transactionService.withdraw(req.email(), req.amount()));
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+		String email = authentication.getName();
+	    return ResponseEntity.ok(transactionService.withdraw(email, req.amount()));
 	}
 }
