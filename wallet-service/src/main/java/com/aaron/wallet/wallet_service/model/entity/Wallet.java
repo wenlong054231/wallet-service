@@ -48,6 +48,10 @@ public class Wallet {
 		this.balance = this.balance.add(amount);
 	}
 	
+	public void deductBalance(BigDecimal amount) {
+		this.balance = this.balance.subtract(amount);
+	}
+	
 	
 	
 	

@@ -49,6 +49,10 @@ public class Transaction {
 		return new Transaction(null, toUserId, amount, TransactionType.DEPOSIT, TransactionStatus.SUCCESS);
 	}
 	
+	public static Transaction withdraw(Long toUserId, BigDecimal amount) {
+		return new Transaction(null, toUserId, amount, TransactionType.WITHDRAW, TransactionStatus.SUCCESS);
+	}
+	
 	public Long getId() {
 		return id;
 	}
