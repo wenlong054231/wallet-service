@@ -1,7 +1,6 @@
 # Wallet Service API
 
-> Portfolio project by Aaron 
-> skills in Java and Spring BooT
+Portfolio project by Aaron 
 
 RESTful wallet service featuring stateless JWT authentication,
 core wallet operations, and concurrency-safe transactions.
