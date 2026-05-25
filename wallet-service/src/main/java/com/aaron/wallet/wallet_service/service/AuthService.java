@@ -8,16 +8,19 @@ import com.aaron.wallet.wallet_service.model.dto.LoginResponseDTO;
 import com.aaron.wallet.wallet_service.model.entity.User;
 import com.aaron.wallet.wallet_service.repository.UserRepository;
 import com.aaron.wallet.wallet_service.security.JwtUtil;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Service
 public class AuthService {
 
 	private final UserRepository userRepository;
 	private final JwtUtil jwtUtil;
-	
-	public AuthService(UserRepository userRepository, JwtUtil jwtUtil) {
+	private final PasswordEncoder passwordEncoder;
+
+	public AuthService(UserRepository userRepository, JwtUtil jwtUtil,PasswordEncoder passwordEncoder) {
 		this.userRepository = userRepository;
 		this.jwtUtil = jwtUtil;
+		this.passwordEncoder = passwordEncoder;
 	}
 	
 	public LoginResponseDTO login(LoginRequestDTO request) {
@@ -28,7 +31,7 @@ public class AuthService {
 	        throw new BusinessException("AUTH_001", "Invalid credentials");
 	    }
 
-	    if (!user.getPassword().equals(request.password())) {
+	    if (!passwordEncoder.matches(request.password(), user.getPassword())) {
 
 	        throw new BusinessException("AUTH_001", "Invalid credentials");
 	    }
