@@ -1,7 +1,7 @@
-FROM maven:3.9-eclipse-temurin-23 AS build
+FROM maven:3.9.9-eclipse-temurin-23 AS build
 WORKDIR /app
 COPY . .
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests -Dmaven.compiler.source=23 -Dmaven.compiler.target=23
 
 FROM eclipse-temurin:23-jre
 WORKDIR /app
