@@ -6,13 +6,14 @@ import java.time.LocalDateTime;
 import com.aaron.wallet.wallet_service.enums.TransactionStatus;
 import com.aaron.wallet.wallet_service.enums.TransactionType;
 
+import jakarta.annotation.Nullable;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Transaction {
@@ -22,21 +23,25 @@ public class Transaction {
 	
 	private Long fromUserId;
 	
+	@Nullable
 	private Long toUserId;
 	private BigDecimal amount;
 	
+	@Column(length = 30)
 	@Enumerated(EnumType.STRING)
 	private TransactionType type;
 
+	@Column(length = 20)
 	@Enumerated(EnumType.STRING)
 	private TransactionStatus status;
+	
 	private LocalDateTime  createdAt;
 	
-	
-	public Transaction(Long id, Long fromUserId, BigDecimal amount, TransactionType type,
+	protected Transaction() {}
+
+	public Transaction(Long toUserId, Long fromUserId, BigDecimal amount, TransactionType type,
 			TransactionStatus status) {
 		super();
-		this.id = id;
 		this.fromUserId = fromUserId;
 		this.toUserId = toUserId;
 		this.amount = amount;
@@ -51,6 +56,14 @@ public class Transaction {
 	
 	public static Transaction withdraw(Long toUserId, BigDecimal amount) {
 		return new Transaction(null, toUserId, amount, TransactionType.WITHDRAW, TransactionStatus.SUCCESS);
+	}
+	
+	public static Transaction transferOut(Long fromUserId, Long toUserId, BigDecimal amount) {
+		return new Transaction(fromUserId, toUserId, amount, TransactionType.TRANSFER_OUT, TransactionStatus.SUCCESS);
+	}
+
+	public static Transaction transferIn(Long toUserId,Long fromUserId, BigDecimal amount) {
+		return new Transaction(toUserId, fromUserId, amount, TransactionType.TRANSFER_IN, TransactionStatus.SUCCESS);
 	}
 	
 	public Long getId() {
@@ -95,8 +108,6 @@ public class Transaction {
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
-
-	
 	
 	
 }

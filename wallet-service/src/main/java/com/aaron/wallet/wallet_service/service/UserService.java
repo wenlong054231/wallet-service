@@ -10,17 +10,19 @@ import com.aaron.wallet.wallet_service.repository.UserRepository;
 import com.aaron.wallet.wallet_service.repository.WalletRepository;
 
 import jakarta.transaction.Transactional;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
     private final WalletRepository walletRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository,
-                        WalletRepository walletRepository) {
+    public UserService(UserRepository userRepository, WalletRepository walletRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.walletRepository = walletRepository;
+        this.passwordEncoder = passwordEncoder;
     }
     
     @Transactional
@@ -32,7 +34,7 @@ public class UserService {
 
         User user = new User();
         user.setEmail(email);
-        user.setPassword(password);
+        user.setPassword(passwordEncoder.encode(password));
 
         User savedUser = userRepository.save(user);
 

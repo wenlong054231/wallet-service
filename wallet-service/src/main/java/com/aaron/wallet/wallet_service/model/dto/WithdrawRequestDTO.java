@@ -3,7 +3,8 @@ package com.aaron.wallet.wallet_service.model.dto;
 import java.math.BigDecimal;
 
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
-public record WithdrawRequestDTO(@NotNull String email, @NotNull BigDecimal amount) {
+public record WithdrawRequestDTO(@NotNull @Positive BigDecimal amount) {
 
 }

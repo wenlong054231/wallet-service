@@ -11,6 +11,8 @@ import com.aaron.wallet.wallet_service.model.dto.LoginRequestDTO;
 import com.aaron.wallet.wallet_service.model.dto.LoginResponseDTO;
 import com.aaron.wallet.wallet_service.service.AuthService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -22,11 +24,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<ApiResponse<LoginResponseDTO>> login(@RequestBody LoginRequestDTO request) {
+    public ResponseEntity<ApiResponse<LoginResponseDTO>> login(@Valid @RequestBody LoginRequestDTO request) {
 
-        return ResponseEntity.ok(
-                ApiResponse.success("Login successful",
-                        authService.login(request))
-        );
+        return ResponseEntity.ok(ApiResponse.success("Login successful",authService.login(request)));
     }
 }
